@@ -1,8 +1,8 @@
 def find_item_by_name_in_collection(name, collection)
  index= 0
 while index<collection.length do
- if collection[index][name] 
-   return collection[index]
+ if collection[index][:item][name] 
+   return collection[index][:item]
  end
  index+=1
  end
