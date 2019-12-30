@@ -10,10 +10,24 @@ while index<collection.length do
 end
 
 def consolidate_cart(cart)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This returns a new Array that represents the cart. Don't merely
-  # change `cart` (i.e. mutate) it. It's easier to return a new thing.
+c_cart = []
+index = 0
+while index<cart.length do
+  new_cart_item = find_item_by_name_in_collection(cart[index][:item], c_cart)
+  if new_cart_item
+  new_cart_item[:count] +=1
+  else 
+  new_item = {
+    :item => cart[index][:item],
+    :price => cart[index][:price],
+    :clearance => cart[index][:clearance],
+    :count => 1
+  }
+  c_cart << new_item
+  end
+  index+=1
+end
+c_cart
 end
 
 def apply_coupons(cart, coupons)
