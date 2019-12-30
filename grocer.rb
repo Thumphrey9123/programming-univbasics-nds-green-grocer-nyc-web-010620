@@ -30,10 +30,24 @@ end
 c_cart
 end
 
-def apply_coupons(cart, coupons)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
+if discounted_item && (discounted_item[:count] >= coupons[i][:num])
+  if cart_item_with_coupon
+    cart_item_with_coupon[:count] += coupons[i][:num]
+    discounted_item[:count] -= coupons[i][:num]
+    else
+    coupon_item = {
+    :item => coupon_item_name,
+    :price => discounted_cost,
+    :clearance => discounted_item[:clearance],
+    :count => coupons[i][:num]
+    }
+    cart << coupon_item
+    discounted_item[:count] -= coupons[i][:num]
+  end
+end
+i+=1
+end
+cart
 end
 
 def apply_clearance(cart)
