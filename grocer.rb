@@ -30,6 +30,14 @@ end
 c_cart
 end
 
+def apply_coupons(cart, coupons)
+i = 0
+while i<coupons.length do
+discounted_item = find_item_by_name_in_collection(coupons[i][:item], cart)
+coupon_item_name = "#{discounted_item[:item]} W/COUPON"
+cart_item_with_coupon = find_item_by_name_in_collection(coupon_item_name, cart)
+discounted_cost = coupons[i][:cost]/coupons[i][:num]
+
 if discounted_item && (discounted_item[:count] >= coupons[i][:num])
   if cart_item_with_coupon
     cart_item_with_coupon[:count] += coupons[i][:num]
